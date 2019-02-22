@@ -30,39 +30,37 @@ already cloned it to the deployment server. Sarnieploy looks for a
 ```json
 {
     "jetty-server-name": {
-        // Path to the folder where you store the
-        // war files for this server
-        // Sarnieploy assumes superuser privilegies are required
-        // to write to this folder
         "wars_folder": "/path/to/wars/directory",
-        // Command to stop the Jetty server
-        // This will be fed to a Popen object
-        // Sarnieploy assumes superuser privilegies are required
-        // to run this command
         "jetty_stop": [
             "command",
             "optional arguments"
         ],
-        // Command to start the Jetty server
-        // This will be fed to a Popen object
-        // Sarnieploy assumes superuser privilegies are required
-        // to run this command
         "jetty_start": [
             "command",
             "optional arguments"
         ],
-        // War file to symlink
-        // Sarnieploy assumes that this file lives in "wars_folder"
-        // and superuser privilegies are required to write it
-        // It will symlink with the '-fs' argument
         "current": "current.war"
-    },
-    // You can specify as many servers as you want
-    "another-jetty-server-name": {
-        // [ ... ]
     }
 }
 ```
+
+Some notes:
+
+- "jetty-server-name": This is the exact string that Sarnieploy will match with
+the `server` argument (required). You can specify as many of these as you want;
+- "wars_folder": Path to the folder where you store the war files for this
+server. Sarnieploy assumes superuser privileges are required to write to this
+folder;
+- "jetty_stop": Command to stop the Jetty server. This will be fed to a
+subprocess.Popen object. Sarnieploy assumes superuser privileges are required
+to run this command;
+- "jetty_start": Command to start the Jetty server. This will be fed to a
+subprocess.Popen object. Sarnieploy assumes superuser privileges are required
+to run this command;
+- "current": War file to symlink. Sarnieploy assumes that this file is located
+in "wars_folder"and superuser privileges are required to write it. It will
+symlink with the '-fs' argument.
+
 
 Check out `sarnieploy -h` for a list of CLI options.
 
