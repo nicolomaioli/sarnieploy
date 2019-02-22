@@ -78,7 +78,7 @@ def deploy_to_server():
             '-S',
             'ln',
             '-fs',
-            path_to_target,
+            target,
             path_to_current
         ]
 
