@@ -1,5 +1,6 @@
 import os
 import sys
+from subprocess import Popen, PIPE, TimeoutExpired
 from sarnieploy.utils import (
     load_config,
     get_password,
@@ -70,14 +71,15 @@ def deploy_to_server():
 
         print("Copied {} to {}".format(target, config.wars_folder))
         print("Ready to symlink {} to {}".format(target, config.current))
+        path_to_current = os.path.join(config.wars_folder, config.current)
 
         cmd = [
             'sudo',
             '-S',
             'ln',
             '-fs',
-            target,
-            config.current
+            path_to_target,
+            path_to_current
         ]
 
         run_sudo_command("Symlinking", cmd, password)
@@ -97,7 +99,22 @@ def deploy_to_server():
 
         cmd = ['sudo', '-S', 'nohup'] + config.jetty_start
 
-        run_sudo_command("Starting the server", cmd, password)
+        print("Running {}".format(" ".join(cmd)))
+        proc = Popen(
+                cmd,
+                stdin=PIPE,
+                stdout=PIPE,
+                stderr=PIPE,
+                universal_newlines=True
+            )
+
+        try:
+            out, err = proc.communicate(input=password, timeout=5)
+        except TimeoutExpired:
+            # This process just hangs forever, so it's ok even if it times out
+            out, err = proc.communicate()
+            print("stdout: {}".format(out))
+            print("stderr: {}".format(err))
 
         print("Successfully started server.")
 
