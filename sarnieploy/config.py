@@ -9,8 +9,10 @@ class Config:
         try:
             with open(config_file, "r") as f:
                 config = json.load(f)
-        except FileNotFoundError:
-            print("Could not find config file in current location")
+        except FileNotFoundError as e:
+            print("Could not find sarnieploy config file in current location.")
+            print("Please refer to documentation on how to create one.")
+            print(e)
             sys.exit(1)
 
         try:
@@ -19,8 +21,11 @@ class Config:
             self.jetty_stop = server_config["jetty_stop"]
             self.jetty_start = server_config["jetty_start"]
             self.current = server_config["current"]
-        except KeyError:
-            print("Invalid syntax in config file")
+        except KeyError as e:
+            print("Invalid syntax in config file.")
+            print("Please refer to documentation on how to create one.")
+            print(e)
+            sys.exit(1)
 
     def __repr__(self):
         to_repr = "Config: ["
