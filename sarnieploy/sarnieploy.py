@@ -53,7 +53,7 @@ def deploy_to_server():
 
     # Copy generated war file to wars direcory and symlink it to current war
     if args.no_copy:
-        print("Skipping copy and symlinking")
+        print("Skipping copy and symlinking.")
     else:
         print("Ready to copy {} to {}".format(target, config.wars))
         path_to_target = os.path.join("target", target)
