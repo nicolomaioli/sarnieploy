@@ -62,7 +62,7 @@ def deploy_to_server():
             'sudo',
             'cp',
             path_to_target,
-            config.wars
+            config.wars_folder
         ]
 
         run_sudo_command("Copying", cmd, password)
