@@ -8,7 +8,7 @@ from sarnieploy.utils import (
     run_command,
     run_sudo_command
 )
-from wargery import create_war_artifact
+from wargery.wargery import create_war_artifact
 from wargery.utils import check_git
 
 
