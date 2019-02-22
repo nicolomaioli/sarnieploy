@@ -93,7 +93,7 @@ def run_sudo_command(desc, password, cmd):
             stdin=PIPE,
             stdout=PIPE,
             stderr=PIPE,
-            encoding='utf-8'
+            universal_newlines=True
         )
 
     try:
