@@ -60,6 +60,7 @@ def deploy_to_server():
 
         cmd = [
             'sudo',
+            '-S',
             'cp',
             path_to_target,
             config.wars_folder
@@ -72,6 +73,7 @@ def deploy_to_server():
 
         cmd = [
             'sudo',
+            '-S',
             'ln',
             '-fs',
             target,
@@ -86,14 +88,14 @@ def deploy_to_server():
     else:
         print("Ready to stop server.")
 
-        cmd = ['sudo'] + config.jetty_stop
+        cmd = ['sudo', '-S'] + config.jetty_stop
 
         run_sudo_command("Stopping the server", cmd, password)
 
         print("Successfully stopped server.")
         print("Ready to start server.")
 
-        cmd = ['sudo', 'nohup'] + config.jetty_start
+        cmd = ['sudo', '-S', 'nohup'] + config.jetty_start
 
         run_sudo_command("Starting the server", cmd, password)
 
