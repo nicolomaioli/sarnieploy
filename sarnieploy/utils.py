@@ -13,7 +13,6 @@ def parse_options():
 
     parser.add_argument(
         "server",
-        nargs=1,
         help="The server to deploy to",
         type=str
     )
