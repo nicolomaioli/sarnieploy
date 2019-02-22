@@ -55,7 +55,7 @@ def deploy_to_server():
     if args.no_copy:
         print("Skipping copy and symlinking.")
     else:
-        print("Ready to copy {} to {}".format(target, config.wars))
+        print("Ready to copy {} to {}".format(target, config.wars_folder))
         path_to_target = os.path.join("target", target)
 
         cmd = [
@@ -67,7 +67,7 @@ def deploy_to_server():
 
         run_sudo_command("Copying", cmd, password)
 
-        print("Copied {} to {}".format(target, config.wars))
+        print("Copied {} to {}".format(target, config.wars_folder))
         print("Ready to symlink {} to {}".format(target, config.current))
 
         cmd = [
