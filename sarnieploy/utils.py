@@ -86,7 +86,7 @@ def run_command(cmd):
         sys.exit(1)
 
 
-def run_sudo_command(desc, password, cmd):
+def run_sudo_command(desc, cmd, password):
     print("Running {}".format(" ".join(cmd)))
     proc = Popen(
             cmd,
