@@ -19,7 +19,6 @@ def parse_options():
 
     parser.add_argument(
         "--branch",
-        nargs=1,
         dest="branch",
         type=str,
         help="The branch you want to build from (defaults to current branch)"
@@ -27,7 +26,6 @@ def parse_options():
 
     parser.add_argument(
         "--war-file",
-        nargs=1,
         dest="war",
         type=str,
         help="Skip war artifact creation and use specified war file"
