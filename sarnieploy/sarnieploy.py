@@ -109,7 +109,7 @@ def deploy_to_server():
             )
 
         try:
-            out, err = proc.communicate(input=password, timeout=5)
+            out, err = proc.communicate(input=password, timeout=10)
         except TimeoutExpired:
             # This process just hangs forever, so it's ok even if it times out
             pass
