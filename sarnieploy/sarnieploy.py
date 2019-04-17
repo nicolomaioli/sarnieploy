@@ -101,12 +101,12 @@ def deploy_to_server():
 
         print("Running {}".format(" ".join(cmd)))
         proc = Popen(
-                cmd,
-                stdin=PIPE,
-                stdout=PIPE,
-                stderr=PIPE,
-                universal_newlines=True
-            )
+            cmd,
+            stdin=PIPE,
+            stdout=PIPE,
+            stderr=PIPE,
+            universal_newlines=True
+        )
 
         try:
             out, err = proc.communicate(input=password, timeout=10)

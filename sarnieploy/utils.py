@@ -87,12 +87,12 @@ def run_command(cmd):
 def run_sudo_command(desc, cmd, password):
     print("Running {}".format(" ".join(cmd)))
     proc = Popen(
-            cmd,
-            stdin=PIPE,
-            stdout=PIPE,
-            stderr=PIPE,
-            universal_newlines=True
-        )
+        cmd,
+        stdin=PIPE,
+        stdout=PIPE,
+        stderr=PIPE,
+        universal_newlines=True
+    )
 
     try:
         out, err = proc.communicate(input=password, timeout=15)
