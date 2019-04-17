@@ -97,12 +97,8 @@ def run_sudo_command(desc, cmd, password):
     try:
         out, err = proc.communicate(input=password, timeout=15)
     except TimeoutExpired:
-        proc.kill()
-        out, err = proc.communicate()
         print("{} timed out, see below:".format(desc))
         print(" ".join(cmd))
-        print("stdout: {}".format(out))
-        print("stderr: {}".format(err))
         sys.exit(1)
 
 
