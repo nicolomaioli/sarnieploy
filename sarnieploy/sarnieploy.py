@@ -119,9 +119,12 @@ def deploy_to_server():
     # Remove all war files from target directory
     if args.clean:
         print("Ready to clean target directory.")
-        os.remove(
-            os.path.join("target", "*.war")
-        )
+
+        # Not using os.path.splitext here as the case is simple enough
+        # and a one-liner fits nicely with list comprehension
+        warfiles = [f for f in os.listdir("target") if f.endswith(".war")]
+        for f in warfiles:
+            os.remove(os.path.join("target", f))
         print("Finished cleaning target directory.")
 
     print("All done.")
