@@ -15,7 +15,7 @@ by installing `requirements.txt` first.
 ```
 $ git clone https://github.com/nicolomaioli/sarnieploy.git
 $ cd sarnieploy
-$ pip -e install . --process-dependency-links --user`
+$ pip install . --process-dependency-links --user`
 ```
 
 This will create a `sarnieploy` command to `~/.local/bin/`, just make sure it's
